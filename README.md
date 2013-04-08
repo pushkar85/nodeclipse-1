@@ -46,6 +46,12 @@ For [Markdown](http://daringfireball.net/projects/markdown/dingus):
 
 Check also [news](https://github.com/Nodeclipse/nodeclipse-blog#news).
 
+We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, where  
+
+- MAJOR indicates substantially new release, possibly with API change
+- MINOR indicates updates, that are fully backward-compatible
+- PATCH indicates that is bug-fix
+
 ### 0.3 (April-May 2013)
 
 - Add [Markdown](http://daringfireball.net/projects/markdown/dingus) support via [Markdown Editor plugin for Eclipse]
@@ -89,6 +95,15 @@ Before starting development, please do
 2. Install and give thorough try
 3. Contact developers, make friends
 4. Say what you are going to do, before you head in. Share and discuss ideas.
+
+### Preparing environment
+
+1. <code>git clone https://github.com/Nodeclipse/nodeclipse-1.git</code>
+2. [Download Eclipse](http://www.eclipse.org/downloads/) 
+3. File -> Import -> Existing Projects into Workspace
+4. File -> Import -> Plugins and Fragments  
+	Select Directory  
+	Select Projects with source folders  
 
 ## Contributors
 LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
