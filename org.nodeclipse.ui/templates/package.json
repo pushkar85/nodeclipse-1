@@ -1,7 +1,7 @@
 {
-  "name": "NodeProject1",
+  "name": "${projectname}",
   "version": "0.1.0",
-  "description": "NodeProject1",
+  "description": "${projectname}",
   "main": "hello-world-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
