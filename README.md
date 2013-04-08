@@ -44,6 +44,8 @@ For [Markdown](http://daringfireball.net/projects/markdown/dingus):
 
 ## Roadmap
 
+Check also [news](https://github.com/Nodeclipse/nodeclipse-blog#news).
+
 ### 0.3 (April-May 2013)
 
 - Add [Markdown](http://daringfireball.net/projects/markdown/dingus) support via [Markdown Editor plugin for Eclipse]
@@ -97,7 +99,7 @@ Paul Verest https://github.com/PaulVI/  (Vision, readme, reference to plugings) 
 ## Contacts
 Do not hesitate to contact developers. 
 Create issue or send [email to dev group](mailto:dev@nodeclipse.org).
-Or skype me by ID pverest, QQ 908781544.
+Or skype by ID pverest, QQ 908781544.
 
 ## For Bloggers and Users of Twitter, Flickr, LinkedIn, Weibo etc.
 
