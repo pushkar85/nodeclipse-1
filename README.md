@@ -101,9 +101,11 @@ Before starting development, please do
 1. <code>git clone https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. [Download Eclipse](http://www.eclipse.org/downloads/) 
 3. File -> Import -> Existing Projects into Workspace
-4. File -> Import -> Plugins and Fragments  
+4. File -> Import -> Plugins and Fragments - do not use (This creates code copies in current workspace)
+<!--  
 	Select Directory  
-	Select Projects with source folders  
+	Select Projects with source folders
+-->	  
 
 ## Contributors
 LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
