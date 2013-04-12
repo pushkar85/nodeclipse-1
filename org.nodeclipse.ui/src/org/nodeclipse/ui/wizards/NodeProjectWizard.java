@@ -10,11 +10,13 @@ import java.net.URI;
 import java.net.URL;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
@@ -123,9 +125,6 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 				workbench.getActiveWorkbenchWindow());
 	}
 
-	/**
-	 * 更新视图,跳转到NodePerspective视图.
-	 */
 	private void updatePerspective() {
 		IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
@@ -182,10 +181,15 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		} catch (InterruptedException e) {
 		}
 
-		// TODO copy README.md & hello-world-server.js
 		try {
-			generateTemplates(newProjectHandle);
-			rewriteReadme(newProjectHandle);
+			// copy README.md, package.json & hello-world-server.js
+			generateTemplates("common-templates", newProjectHandle);
+			generateTemplates("templates", newProjectHandle);
+			rewriteFile("README.md", newProjectHandle);
+			rewriteFile("package.json", newProjectHandle);
+
+			// JSHint support
+			runJSHint(newProjectHandle);
 		} catch (CoreException e) {
 			LogUtil.error(e);
 		}
@@ -193,7 +197,7 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		newProject = newProjectHandle;
 	}
 
-	private void generateTemplates(IProject projectHandle) throws CoreException {
+	private void generateTemplates(String path, IProject projectHandle) throws CoreException {
 		Bundle bundle = Activator.getDefault().getBundle();
 		if (bundle == null) {
 			throw new CoreException(new Status(IStatus.ERROR,
@@ -201,13 +205,13 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		}
 		try {
 			URL location = FileLocator.toFileURL(bundle.getEntry("/"));
-			File templateRoot = new File(location.getPath(), "templates");
-			RelativityFileSystemStructureProvider structureProvider 
-				= new RelativityFileSystemStructureProvider(templateRoot);
+			File templateRoot = new File(location.getPath(), path);
+			RelativityFileSystemStructureProvider structureProvider = new RelativityFileSystemStructureProvider(
+					templateRoot);
 			ImportOperation operation = new ImportOperation(
 					projectHandle.getFullPath(), templateRoot,
 					structureProvider, new IOverwriteQuery() {
-					    public String queryOverwrite(String pathString) {
+						public String queryOverwrite(String pathString) {
 							return ALL;
 						}
 					}, structureProvider.getChildren(templateRoot));
@@ -215,33 +219,38 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 			operation.setContext(getShell());
 			operation.run(null);
 		} catch (Exception e) {
-			throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getLocalizedMessage()));
+			throw new CoreException(new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID, e.getLocalizedMessage()));
 		}
 	}
 
-	private void rewriteReadme(IProject projectHandle) throws CoreException {
+	private void rewriteFile(String filename, IProject projectHandle)
+			throws CoreException {
 		String newLine = System.getProperty("line.separator");
-		IFile readme = projectHandle.getFile("README.md");
-		if(!readme.exists()) {
+		IFile readme = projectHandle.getFile(filename);
+		if (!readme.exists()) {
 			throw new CoreException(new Status(IStatus.ERROR,
-					Activator.PLUGIN_ID, "RADME.md not found"));
+					Activator.PLUGIN_ID, filename + "not found"));
 		}
 		InputStreamReader ir = new InputStreamReader(readme.getContents());
 		BufferedReader br = new BufferedReader(ir);
 		StringBuilder sb = new StringBuilder();
 		String line;
 		try {
-			while((line = br.readLine()) != null) {
-				if(line.contains("${projectname}")) {
-					line = line.replace("${projectname}", projectHandle.getName());
+			while ((line = br.readLine()) != null) {
+				if (line.contains("${projectname}")) {
+					line = line.replace("${projectname}",
+							projectHandle.getName());
 				}
 				sb.append(line);
 				sb.append(newLine);
 			}
-			ByteArrayInputStream source = new ByteArrayInputStream(sb.toString().getBytes());
+			ByteArrayInputStream source = new ByteArrayInputStream(sb
+					.toString().getBytes());
 			readme.setContents(source, true, true, null);
 		} catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, Activator.PLUGIN_ID, "Cannot read README.md"));
+			throw new CoreException(new Status(IStatus.ERROR,
+					Activator.PLUGIN_ID, "Cannot read " + filename));
 		} finally {
 			try {
 				ir.close();
@@ -251,6 +260,46 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 			ir = null;
 			br = null;
 		}
+	}
+
+	private void runJSHint(IProject projectHandle) throws CoreException {
+		String builderId = "com.eclipsesource.jshint.ui.builder";
+		IProjectDescription description = projectHandle.getDescription();
+
+		if (!containsBuildCommand(description, builderId)) {
+			addBuildCommand(description, builderId);
+			projectHandle.setDescription(description, null);
+		}
+
+		triggerClean(projectHandle, builderId);
+	}
+
+	private boolean containsBuildCommand(IProjectDescription description,
+			String builderId) {
+		for (ICommand command : description.getBuildSpec()) {
+			if (command.getBuilderName().equals(builderId)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private void addBuildCommand(IProjectDescription description, String builderId) {
+		ICommand[] oldCommands = description.getBuildSpec();
+		ICommand[] newCommands = new ICommand[oldCommands.length + 1];
+		System.arraycopy(oldCommands, 0, newCommands, 0, oldCommands.length);
+		newCommands[newCommands.length - 1] = createBuildCommand(description, builderId);
+		description.setBuildSpec(newCommands);
+	}
+
+	private ICommand createBuildCommand(IProjectDescription description, String builderId) {
+		ICommand command = description.newCommand();
+		command.setBuilderName(builderId);
+		return command;
+	}
+
+	public static void triggerClean(IProject project, String builderName) throws CoreException {
+		project.build(IncrementalProjectBuilder.CLEAN_BUILD, builderName, null,	null);
 	}
 
 	@SuppressWarnings("unused")
@@ -286,5 +335,4 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		}
 
 	}
-
 }

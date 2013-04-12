@@ -1,15 +1,12 @@
 package org.nodeclipse.ui.wizards;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URI;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +17,6 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -123,8 +119,12 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 				monitor.worked(1);
 
 				try {
+					generateTemplates("common-templates", newProjectHandle);
+					rewriteFile("README.md", newProjectHandle);
 					rewritePackageJson(monitor, newProjectHandle);
-					generateReadme(monitor, newProjectHandle);
+
+					// JSHint support
+					runJSHint(newProjectHandle);
 				} catch (CoreException e1) {
 					throw new InvocationTargetException(e1);
 				}
@@ -291,32 +291,6 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 		}		
 	}
 	
-	private void generateReadme(IProgressMonitor monitor, IProject projectHandle) throws CoreException {
-		IFile readme = projectHandle.getFile("README.md");
-		StringWriter sw = new StringWriter();
-		BufferedWriter bw = new BufferedWriter(sw);
-		try {
-			bw.write("# ");
-			bw.write(projectHandle.getName());
-			bw.newLine();
-			bw.newLine();
-			bw.newLine();
-			bw.write("Created with [Nodeclipse v0.2](http://tomotaro1065.github.com/nodeclipse/) ");
-			bw.newLine();
-		} catch (IOException e) {
-			throw new CoreException(
-						new Status(IStatus.ERROR, Activator.PLUGIN_ID, e.getMessage()));
-		} finally {
-			try {
-				bw.close();
-				sw.close();
-			} catch (IOException e) {
-			}
-		}
-		ByteArrayInputStream source = new ByteArrayInputStream(sw.toString().getBytes());
-		readme.create(source, true, monitor);
-	}
-
 	private void launchNpmInstall(IProject projectHandle) throws InvocationTargetException, CoreException {
 		InstallLaunchShortcut launcher = new InstallLaunchShortcut();
 		IFile path = projectHandle.getFile(Constants.PACKAGE_JSON);
