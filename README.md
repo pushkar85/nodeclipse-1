@@ -2,12 +2,33 @@
 
 ![nodeclipse-logo](nodeclipse-logo-rough.png)
 
+We have released version 0.3.0 . Enjoy!
+
+Update site has been changed from [https://github.com/tomotaro1065/nodeclipse/updates](https://github.com/tomotaro1065/nodeclipse/updates)
+ to [http://www.nodeclipse.org/updates](http://www.nodeclipse.org/updates)
+
 Moved from [https://github.com/tomotaro1065/nodeclipse](https://github.com/tomotaro1065/nodeclipse)
  to [https://github.com/Nodeclipse/nodeclipse-1](https://github.com/Nodeclipse/nodeclipse-1) .
 
-> [Nodeclipse](http://www.nodeclipse.org/) or [Nodeclipse-1 v0.2](http://www.tomotaro1065.com/nodeclipse/) is [Eclipse](http://www.eclipse.org/) plugin for the [Node.js](http://www.nodejs.org/). 
+> [Nodeclipse](http://www.nodeclipse.org/) or [Nodeclipse-1 v0.3](https://github.com/Nodeclipse/nodeclipse-1) is [Eclipse](http://www.eclipse.org/) plugin for the [Node.js](http://www.nodejs.org/). 
 The purpose of Nodeclipse is to create environment in 
 which Node.js development is easy for any user from beginner to professional. 
+
+## What's new (ver 0.3.0)
+
+- Modify project generating features adding support for [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  
+	You had to set project property for JSHint for each project creating. It was boring work.
+	Nodeclipse 0.3 will set them automatically when generating Node project and Express project.
+
+	You should install JSHint integration for Eclipse.
+	Download site: http://github.eclipsesource.com/jshint-eclipse/updates/
+- Update template for new project
+* Add README.md template
+* Add hello-world-server.js
+* Add package.json (This is good practice)
+* [Publish](http://marketplace.eclipse.org/quickstart) on Eclipse marketplace
+* [t#3 [Feature Request] allow passing arguments](https://github.com/tomotaro1065/nodeclipse/issues/3)
+* [n#2 on x64 windows doesn't find NodeJS dir automatically](https://github.com/Nodeclipse/nodeclipse/issues/2)
 
 ## Vision
 
@@ -16,18 +37,20 @@ One-stop shop for Node.js tools.
 We can't develop everything at once, but we let you know what are the best things around for Node.js development with Eclipse.
 
 ## Features
+
 * Creating default structure for New Node Project and New Node Source File 
 * JavaScript Syntax highlighting
 * Content Assistant
 * NPM support
 * Debugging - Breakpoint, Trace, etc... via [Eclipse debugger plugin for V8](http://code.google.com/p/chromedevtools/)
 * Generating Express project
+* Support for [JSHint](http://www.jshint.com/)
+	Download site: http://github.eclipsesource.com/jshint-eclipse/updates/
 * Support for Juno
 
 ## Installing
 
-Download site v0.1.8: http://www.nodeclipse.org/updates  
-Download site v>0.2 (Nodeclipse-1): http://www.tomotaro1065.com/nodeclipse/updates/
+Download site : http://www.nodeclipse.org/updates  
 
 ## Usage
 
@@ -52,32 +75,19 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 - MINOR indicates updates, that are fully backward-compatible
 - PATCH indicates that is bug-fix
 
-### 0.3 (April-May 2013)
-
-- Add [Markdown](http://daringfireball.net/projects/markdown/dingus) support via [Markdown Editor plugin for Eclipse]
-(http://www.winterwell.com/software/markdown-editor.php) developped by [Daniel Winterstein](http://winterstein.me.uk)  
-	Download site: http://winterwell.com/software/updatesite/
-- Update template for new project
-* Add README.md template
-* Add hello-world-server.js
-* Add package.json (This is good practice)
-v [Publish](http://marketplace.eclipse.org/quickstart) on Eclipse marketplace
-
 
 ### 0.4 (TBD)
 
 TBD
 
 ### Ideas, proposals, work-in-progress etc.
-
+- Improving Code Assist
 - Debugging features without Chrome developer tools.  In other words, debugging on Node Editor
 - Obfuscation and source-level debugging features using Source Maps
 - Unit test support
 - Easily deployment to Heroku (possibly via [Heroku Eclipse plugin](https://devcenter.heroku.com/articles/getting-started-with-heroku-eclipse))  
 	Download site: https://eclipse-plugin.herokuapp.com/install
 
-- Add [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  
-	Download site: http://github.eclipsesource.com/jshint-eclipse/updates/
 - Add Jade support	(http://blog.wookets.com/2011/10/how-to-compile-coffeescript-jade-stylus.html Posted 30th October 2011 by Sean Wesenberg)
 - Integrate console window (library unknown)
 - Add CoffeeScript support via [coffeescript-eclipse plugin](https://github.com/adamschmideg/coffeescript-eclipse)  
@@ -101,8 +111,8 @@ Before starting development, please do
 1. <code>git clone https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. [Download Eclipse](http://www.eclipse.org/downloads/) 
 3. File -> Import -> Existing Projects into Workspace
-4. File -> Import -> Plugins and Fragments - do not use (This creates code copies in current workspace)
 <!--  
+4. File -> Import -> Plugins and Fragments - do not use (This creates code copies in current workspace)
 	Select Directory  
 	Select Projects with source folders
 -->	  
@@ -122,7 +132,7 @@ Or skype by ID pverest, QQ 908781544.
 
 In case you plan to blog or tweet about the Nodeclipse plugin, please use the tag "#nodeclipse"
  in order to make it easier to find all the comments and pictures. Thanks a lot for telling the world about the project!  
-  | 请用#nodeclipse#标签微博一下。  
+  | 隸ｷ用#nodeclipse#譬・ｭｾ微博一下。  
   | Por favor, utilizar etiqueta #nodeclipse  
   | ツイートする時は、＃nodeclipseタグを使用してください。  
   | Bitte benutzen Sie tag #nodeclipse um zu twiten.
