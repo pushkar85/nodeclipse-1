@@ -13,7 +13,7 @@ which Node.js development is easy for any user from beginner to professional.
 
 ## What's new (ver 0.3)
 
-- Modify project generating features adding support for [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  
+- Add support for [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  
 	You had to set project property for JSHint for each project creating. It was boring task.<br/>
 	Nodeclipse 0.3 will set them automatically when generating Node project and Express project.<br/>
 	You should install JSHint integration for Eclipse.<br/>
@@ -43,7 +43,7 @@ We can't develop everything at once, but we let you know what are the best thing
 * NPM support
 * Debugging - Breakpoint, Trace, etc... via [Eclipse debugger plugin for V8](http://code.google.com/p/chromedevtools/)
 * Generating Express project
-* Support for [JSHint](http://www.jshint.com/)
+* Support for [JSHint](http://www.jshint.com/).<br/>
 	Download site: http://github.eclipsesource.com/jshint-eclipse/updates/
 * Support for Juno
 
