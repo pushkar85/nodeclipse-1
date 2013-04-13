@@ -143,7 +143,7 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		if (newProject != null) {
 			return;
 		}
-		IProject newProjectHandle = mainPage.getProjectHandle();
+		final IProject newProjectHandle = mainPage.getProjectHandle();
 		URI location = null;
 		if (!mainPage.useDefaults()) {
 			location = mainPage.getLocationURI();
@@ -171,6 +171,19 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 				} catch (ExecutionException e) {
 					throw new InvocationTargetException(e);
 				}
+				
+				try {
+					// copy README.md, package.json & hello-world-server.js
+					generateTemplates("common-templates", newProjectHandle, monitor);
+					generateTemplates("templates", newProjectHandle, monitor);
+					rewriteFile("README.md", newProjectHandle, monitor);
+					rewriteFile("package.json", newProjectHandle, monitor);
+
+					// JSHint support
+					runJSHint(newProjectHandle, monitor);
+				} catch (CoreException e) {
+					LogUtil.error(e);
+				}
 			}
 		};
 
@@ -181,23 +194,10 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		} catch (InterruptedException e) {
 		}
 
-		try {
-			// copy README.md, package.json & hello-world-server.js
-			generateTemplates("common-templates", newProjectHandle);
-			generateTemplates("templates", newProjectHandle);
-			rewriteFile("README.md", newProjectHandle);
-			rewriteFile("package.json", newProjectHandle);
-
-			// JSHint support
-			runJSHint(newProjectHandle);
-		} catch (CoreException e) {
-			LogUtil.error(e);
-		}
-
 		newProject = newProjectHandle;
 	}
 
-	private void generateTemplates(String path, IProject projectHandle) throws CoreException {
+	private void generateTemplates(String path, IProject projectHandle, IProgressMonitor monitor) throws CoreException {
 		Bundle bundle = Activator.getDefault().getBundle();
 		if (bundle == null) {
 			throw new CoreException(new Status(IStatus.ERROR,
@@ -205,7 +205,9 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		}
 		try {
 			URL location = FileLocator.toFileURL(bundle.getEntry("/"));
+			LogUtil.info("location=" + location.toString());
 			File templateRoot = new File(location.getPath(), path);
+			LogUtil.info("templateRoot="+templateRoot.getAbsolutePath());
 			RelativityFileSystemStructureProvider structureProvider = new RelativityFileSystemStructureProvider(
 					templateRoot);
 			ImportOperation operation = new ImportOperation(
@@ -217,20 +219,21 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 					}, structureProvider.getChildren(templateRoot));
 
 			operation.setContext(getShell());
-			operation.run(null);
+			operation.run(monitor);
+			LogUtil.info("ImportOperation running...");
 		} catch (Exception e) {
 			throw new CoreException(new Status(IStatus.ERROR,
 					Activator.PLUGIN_ID, e.getLocalizedMessage()));
 		}
 	}
 
-	private void rewriteFile(String filename, IProject projectHandle)
+	private void rewriteFile(String filename, IProject projectHandle, IProgressMonitor monitor)
 			throws CoreException {
 		String newLine = System.getProperty("line.separator");
 		IFile readme = projectHandle.getFile(filename);
 		if (!readme.exists()) {
 			throw new CoreException(new Status(IStatus.ERROR,
-					Activator.PLUGIN_ID, filename + "not found"));
+					Activator.PLUGIN_ID, filename + " not found"));
 		}
 		InputStreamReader ir = new InputStreamReader(readme.getContents());
 		BufferedReader br = new BufferedReader(ir);
@@ -262,7 +265,7 @@ public class NodeProjectWizard extends Wizard implements INewWizard {
 		}
 	}
 
-	private void runJSHint(IProject projectHandle) throws CoreException {
+	private void runJSHint(IProject projectHandle, IProgressMonitor monitor) throws CoreException {
 		String builderId = "com.eclipsesource.jshint.ui.builder";
 		IProjectDescription description = projectHandle.getDescription();
 

@@ -88,7 +88,10 @@ public class LaunchShortcut implements ILaunchShortcut {
      * @throws CoreException
      */
     private ILaunchConfiguration createLaunchConfiguration(ILaunchConfigurationType type, String path, IFile file) throws CoreException {
-    	String configname = file.getName();
+    	String configname = file.getFullPath().toString().replace('/', '-');
+    	if(configname.startsWith("-")) {
+    		configname = configname.substring(1);
+    	}
 
     	ILaunchConfiguration[] configs = DebugPlugin.getDefault().getLaunchManager().getLaunchConfigurations(type);
     	for(ILaunchConfiguration config : configs) {
