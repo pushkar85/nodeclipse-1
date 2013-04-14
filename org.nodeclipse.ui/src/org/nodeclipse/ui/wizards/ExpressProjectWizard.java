@@ -90,6 +90,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 		newNatures[natures.length] = NodeNature.NATURE_ID;
 		description.setNatureIds(newNatures);
 
+		final boolean exists = isExistsProjectFolder(description);
 		final String projectName = mainPage.getProjectName();
 		final String templateEngine = mainPage.getSelectedTemplateEngine();
 
@@ -97,7 +98,10 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 			@Override
 			public void run(IProgressMonitor monitor)
 					throws InvocationTargetException, InterruptedException {
-				createProject(description, monitor);
+				createProject(description, monitor);				
+				if(exists == true) {
+					return;
+				}
 				
 				String tempdir = System.getProperty("java.io.tmpdir")
 						+ "/express-work/"

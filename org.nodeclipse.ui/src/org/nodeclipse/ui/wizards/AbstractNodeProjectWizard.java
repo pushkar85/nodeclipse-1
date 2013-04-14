@@ -5,13 +5,17 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
 
+import org.eclipse.core.internal.resources.Workspace;
+import org.eclipse.core.internal.utils.FileUtil;
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
@@ -149,7 +153,35 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
 
 		triggerClean(projectHandle, builderId);
 	}
-
+	
+	protected boolean isExistsProjectFolder(IProjectDescription description) {
+		URI location = description.getLocationURI();
+		String name = description.getName();
+		
+		File folder = null;
+		if(location != null) {
+			folder = FileUtil.toPath(FileUtil.canonicalURI(location)).toFile();
+		} else {
+			Workspace workspace = (Workspace)ResourcesPlugin.getWorkspace();
+			folder = workspace.getRoot().getLocation().append(name).toFile();
+		}
+		
+		if(folder.exists()) {
+			if(folder.isDirectory()) {
+				File[] files = folder.listFiles();
+				if(files.length == 0) {
+					return false;
+				} else {
+					return true;
+				}
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	}
+	
 	protected boolean containsBuildCommand(IProjectDescription description,
 			String builderId) {
 		for (ICommand command : description.getBuildSpec()) {
@@ -182,7 +214,7 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
         BasicNewResourceWizard.selectAndReveal(newProject, workbench.getActiveWorkbenchWindow());
     }
 
-    private void updatePerspective() {
+    protected void updatePerspective() {
         IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
         IPerspectiveRegistry reg = WorkbenchPlugin.getDefault().getPerspectiveRegistry();
         PerspectiveDescriptor rtPerspectiveDesc = (PerspectiveDescriptor) reg.findPerspectiveWithId(NodePerspective.ID);
