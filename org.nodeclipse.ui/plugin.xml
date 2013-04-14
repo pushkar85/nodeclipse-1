@@ -151,6 +151,12 @@
       <commonWizard
             menuGroupId="org.nodeclipse.ui.wizards.category"
             type="new"
+            wizardId="org.nodeclipse.ui.wizards.ExpressProjectWizard">
+         <enablement></enablement>
+      </commonWizard>
+      <commonWizard
+            menuGroupId="org.nodeclipse.ui.wizards.category"
+            type="new"
             wizardId="org.nodeclipse.ui.wizards.NodeFileWizard">
          <enablement></enablement>
       </commonWizard>
