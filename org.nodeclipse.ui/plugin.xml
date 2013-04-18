@@ -9,6 +9,15 @@
       </category>
       <wizard
             category="org.nodeclipse.ui.wizards.category"
+            class="org.nodeclipse.ui.wizards.ExpressProjectWizard"
+            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
+            icon="icons/node.png"
+            id="org.nodeclipse.ui.wizards.ExpressProjectWizard"
+            name="Node Express Project"
+            project="true">
+      </wizard>
+      <wizard
+            category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.NodeProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
             icon="icons/node.png"
@@ -29,15 +38,6 @@
          <description>
             Create a new Node source file
          </description>
-      </wizard>
-      <wizard
-            category="org.nodeclipse.ui.wizards.category"
-            class="org.nodeclipse.ui.wizards.ExpressProjectWizard"
-            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node.png"
-            id="org.nodeclipse.ui.wizards.ExpressProjectWizard"
-            name="Express Project"
-            project="true">
       </wizard>
    </extension>
    <extension
@@ -145,13 +145,13 @@
       <commonWizard
             menuGroupId="org.nodeclipse.ui.wizards.category"
             type="new"
-            wizardId="org.nodeclipse.ui.wizards.NodeProjectWizard">
+            wizardId="org.nodeclipse.ui.wizards.ExpressProjectWizard">
          <enablement></enablement>
       </commonWizard>
       <commonWizard
             menuGroupId="org.nodeclipse.ui.wizards.category"
             type="new"
-            wizardId="org.nodeclipse.ui.wizards.ExpressProjectWizard">
+            wizardId="org.nodeclipse.ui.wizards.NodeProjectWizard">
          <enablement></enablement>
       </commonWizard>
       <commonWizard
