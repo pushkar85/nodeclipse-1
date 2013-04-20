@@ -14,3 +14,4 @@ chromedevtools/plugins/org.chromium.sdk.wipbackend.wk120709/bin
 chromedevtools/utils/org.chromium.sdk.tests.system/bin
 chromedevtools/utils/org.chromium.sdk.tests.system.runner/bin
 *.DS_Store
+/.project

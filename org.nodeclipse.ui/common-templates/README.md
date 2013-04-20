@@ -1,4 +1,15 @@
 # ${projectname}
 
+## Objective
 
-Created with [Nodeclipse v0.3](https://github.com/Nodeclipse/nodeclipse-1)   
+
+
+## Usage
+
+
+
+## Developing
+
+
+Created with [Nodeclipse v0.4](https://github.com/Nodeclipse/nodeclipse-1)
+ ([Eclipse Marketplace](http://marketplace.eclipse.org/content/nodeclipse), [site](http://www.nodeclipse.org))   
