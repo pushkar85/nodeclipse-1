@@ -11,29 +11,6 @@ Moved from [https://github.com/tomotaro1065/nodeclipse](https://github.com/tomot
 The purpose of Nodeclipse is to create environment in 
 which Node.js development is easy for any user from beginner to professional. 
 
-## What's new (ver 0.3)
-
-- Add support for [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  
-	You had to set project property for JSHint for each project creating. It was boring task.<br/>
-	Nodeclipse 0.3 will set them automatically when generating Node project and Express project.<br/>
-	You should install JSHint integration for Eclipse.<br/>
-	Update site: http://github.eclipsesource.com/jshint-eclipse/updates/
-- Update template for new project
-* Add README.md template
-* Add hello-world-server.js
-* Add package.json (This is good practice)
-* [Publish](http://marketplace.eclipse.org/quickstart) on Eclipse marketplace
-* [t#3 [Feature Request] allow passing arguments](https://github.com/tomotaro1065/nodeclipse/issues/3)
-	You can pass arguments to application and node.js setting on [Debug configration...]-[Node Application]-[&ltyour configration name&gt]-[Arguments].<br/>
-	You can also set arguments on [Run configuration...].<br/>
-	![Screen shot](Arguments.png)
-* [n#2 on x64 windows doesn't find NodeJS dir automatically](https://github.com/Nodeclipse/nodeclipse/issues/2)
-* [#5 When creating Node project and folder already exists, then add only .project file and don't add 3 files (README.md, hello-world-server.js, package.json)](https://github.com/Nodeclipse/nodeclipse-1/issues/5)
-* [#6 Add Express Project in main menu under File -> New (in Node perspective)](https://github.com/Nodeclipse/nodeclipse-1/issues/6)<br/>
-	If [Node Express Project] menu does not appear under File->New, reset [Node] perspective by right-clicking on the [Node] button, which is located perspective switching area.<br/>
-	![ResetPerspective](ResetPerspective.png)
-
-
 ## Vision
 
 One-stop shop for Node.js tools.
@@ -68,6 +45,30 @@ For [Markdown](http://daringfireball.net/projects/markdown/dingus):
 3. (Optional, may be useful because double whitespace is hard line break) 
 	Show whitespace character via Preferences > General > Editors > Text Editors : checkbox labeled "Show whitespace characters"
 
+## What's new (ver 0.3)
+
+- Add support for [JSHint](http://www.jshint.com/) integration for Eclipse, [developed by EclipseSource](https://github.com/eclipsesource/jshint-eclipse)  
+	You had to set project property for JSHint for each project creating. It was boring task.<br/>
+	Nodeclipse 0.3 will set them automatically when generating Node project and Express project.<br/>
+	You should install JSHint integration for Eclipse.<br/>
+	Update site: http://github.eclipsesource.com/jshint-eclipse/updates/
+- Update template for new project
+* Add README.md template
+* Add hello-world-server.js
+* Add package.json (This is good practice)
+* [Publish](http://marketplace.eclipse.org/quickstart) on Eclipse marketplace
+* [t#3 [Feature Request] allow passing arguments](https://github.com/tomotaro1065/nodeclipse/issues/3)
+	You can pass arguments to application and node.js setting on [Debug configration...]-[Node Application]-[&ltyour configration name&gt]-[Arguments].<br/>
+	You can also set arguments on [Run configuration...].<br/>
+	![Screen shot](Arguments.png)
+* [n#2 on x64 windows doesn't find NodeJS dir automatically](https://github.com/Nodeclipse/nodeclipse/issues/2)
+
+### 0.3.1
+
+* [#5 When creating Node project and folder already exists, then add only .project file and don't add 3 files (README.md, hello-world-server.js, package.json)](https://github.com/Nodeclipse/nodeclipse-1/issues/5)
+* [#6 Add Express Project in main menu under File -> New (in Node perspective)](https://github.com/Nodeclipse/nodeclipse-1/issues/6)<br/>
+	If [Node Express Project] menu does not appear under File->New, reset [Node] perspective by right-clicking on the [Node] button, which is located perspective switching area.<br/>
+	![ResetPerspective](ResetPerspective.png)
 
 ## Roadmap
 
@@ -82,7 +83,12 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 
 ### 0.4 (TBD)
 
-TBD
+Please participate in discussion and vote on features on https://github.com/Nodeclipse/nodeclipse-1/issues
+
+### 0.5 (June-July 2013)
+
+- Kepler 4.3 support
+
 
 ### Ideas, proposals, work-in-progress etc.
 - Improving Code Assist
@@ -93,11 +99,15 @@ TBD
 	Download site: https://eclipse-plugin.herokuapp.com/install
 
 - Add Jade support	(http://blog.wookets.com/2011/10/how-to-compile-coffeescript-jade-stylus.html Posted 30th October 2011 by Sean Wesenberg)
-- Integrate console window (library unknown)
+- Integrate console window (library unknown) -> currently can use StartExplorer (bundled with Enide)
 - Add CoffeeScript support via [coffeescript-eclipse plugin](https://github.com/adamschmideg/coffeescript-eclipse)  
-	Download site: http://coffeescript-editor.eclipselabs.org.codespot.com/hg/
+	Download site: http://coffeescript-editor.eclipselabs.org.codespot.com/hg/  
+	(also requires XText. See CoffeeScriptSet.p2f in Enide for quick install)
 - [Eclipse Json Editor Plugin](http://sourceforge.net/p/eclipsejsonedit/wiki/Home/) Last Update: 2012-11-07
- (The JSON Editor is a simple plugin for the Eclipse IDE that provides: - Color text highlighting - An Outline Tree view - JSON validation
+ (The JSON Editor is a simple plugin for the Eclipse IDE that provides:
+  - Color text highlighting
+  - An Outline Tree view
+  - JSON validation
   - Text formatting - Text folding for the JSON data format.)	
   No Update site.
 	
