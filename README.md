@@ -196,16 +196,32 @@ http://www.iteye.com/news/23933
 
 #### Other Node IDEs
 
-Nide http://coreh.github.com/nide/ v0.2 Last update 2012-04  
-JetBrains WebStorm or [IntelliJ IDEA](www.jetbrains.com/idea/features/nodejs.html) (commercial products)  
-Microsoft WebMatrix (free) or Visual Studio (commercial product)  
-CloudIDE [c9.io](https://c9.io) (cloud service)  
-Scripted https://github.com/scripted-editor/scripted  
-Eclipse Orion  
-komodo-ide http://www.activestate.com/komodo-ide (commercial product)  
-Netbeans have a [NodeJS plugin](http://plugins.netbeans.org/plugin/36653/nodejs)  
+- Nide http://coreh.github.com/nide/ v0.2 Last update 2012-04  
+- JetBrains WebStorm or [IntelliJ IDEA](www.jetbrains.com/idea/features/nodejs.html) (commercial products)  
+- Microsoft WebMatrix (free) or Visual Studio (commercial product)  
+- CloudIDE [c9.io](https://c9.io) (cloud service)  
+- Scripted https://github.com/scripted-editor/scripted  
+- Eclipse Orion  
+- komodo-ide http://www.activestate.com/komodo-ide (commercial product)  
+- Netbeans have a [NodeJS plugin](http://plugins.netbeans.org/plugin/36653/nodejs)  
 
-#### Hints
+#### Other Eclipse-based IDEs
+
+- Adobe Flash Builder
+- ADT (Android Development Tools)
+- Aptana Studio (PHP, Python, Rubi)
+- Erlang IDE
+- Groovy & Grails Tool Suite (GGTS)
+- IBM Rational product line
+- JBoss Developer Studio
+- MyEclipse, from Genuitec is a commercial IDE 
+- PyDev Python IDE
+- SAP NetWeaver Developer Studio
+- Scala IDE
+- Spring Tool Suite
+- Zend Studio (PHP) Commercial
+
+#### Hints & Notes
 
 http://wiki.eclipse.org/Tycho/Reference_Card  
 http://stackoverflow.com/questions/10352089/how-do-i-build-an-eclipse-rcp-app-so-that-its-features-can-be-updated-automatica?rq=1  
