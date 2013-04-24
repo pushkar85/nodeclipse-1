@@ -138,7 +138,11 @@ In Eclipse for Java or RCP developers
 4. File -> Import -> Plugins and Fragments - do not use (This creates code copies in current workspace)
 	Select Directory  
 	Select Projects with source folders
--->	  
+-->
+
+### Code standard
+
+1. If you edited or created file, add yourself as @author in JavaDoc or comments 	  
 
 ## Contributors
 LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
