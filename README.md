@@ -80,10 +80,13 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 - MINOR indicates updates, that are fully backward-compatible
 - PATCH indicates that is bug-fix
 
+Please participate in discussion and [vote](https://github.com/Nodeclipse/nodeclipse-1/issues/13)
+ on features on https://github.com/Nodeclipse/nodeclipse-1/issues
 
 ### 0.4 (TBD)
 
-Please participate in discussion and vote on features on https://github.com/Nodeclipse/nodeclipse-1/issues
+- Improving Code Assist
+- Support for Sublime Text
 
 ### 0.5 (June-July 2013)
 
