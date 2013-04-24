@@ -156,7 +156,9 @@ Paul Verest https://github.com/PaulVI/  (Vision, readme, reference to plugings) 
 ## Contacts
 Do not hesitate to contact developers. 
 Create issue or send [email to dev group](mailto:dev@nodeclipse.org).
-Or skype by ID pverest, QQ 908781544.
+Or skype by ID pverest, QQ 908781544.  
+Visit [Nodeclipse Google Group](https://groups.google.com/forum/?hl=en&fromgroups#!forum/nodeclipse).
+
 
 ## For Bloggers and Users of Twitter, Flickr, LinkedIn, Weibo etc.
 
