@@ -38,6 +38,9 @@ import org.nodeclipse.ui.util.LogUtil;
 import org.nodeclipse.ui.util.ProcessUtils;
 import org.osgi.framework.Bundle;
 
+/**
+ * @author Tomoyuki Inagaki
+ */
 public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 	private final String WINDOW_TITLE = "New Express Project";
 
@@ -123,6 +126,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 				monitor.worked(1);
 
 				try {
+					//TODO make universal method for all templates
 					generateTemplates("common-templates", newProjectHandle);
 					rewriteFile("README.md", newProjectHandle);
 					rewritePackageJson(monitor, newProjectHandle);
