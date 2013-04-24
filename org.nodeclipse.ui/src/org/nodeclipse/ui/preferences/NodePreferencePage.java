@@ -6,10 +6,15 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.nodeclipse.ui.Activator;
 
+/**
+ * @author Tomoyuki Inagaki
+ * @author Paul Verest
+ */
 public class NodePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     private FileFieldEditor fileFieldEditor;
     private FileFieldEditor expressPath;
+    private FileFieldEditor completionsPath;
     
     public NodePreferencePage() {
         super(GRID);
@@ -29,6 +34,9 @@ public class NodePreferencePage extends FieldEditorPreferencePage implements IWo
         
         expressPath = new FileFieldEditor(PreferenceConstants.EXPRESS_PATH, "Express Path:", getFieldEditorParent());
         addField(expressPath);
+
+        completionsPath = new FileFieldEditor(PreferenceConstants.COMPLETIONS_JSON_PATH, "Completions.json Path:", getFieldEditorParent());
+        addField(completionsPath);
     }
 
     @Override

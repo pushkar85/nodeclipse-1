@@ -10,6 +10,11 @@ import java.util.Map;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 
+/**
+ * @author ?
+ * @author Tomoyuki Inagaki
+ * @author Paul Verest
+ */
 public class ProcessUtils {
 	public static String getNodePath() {
 		return Activator.getDefault().getPreferenceStore()
@@ -42,6 +47,12 @@ public class ProcessUtils {
 		return Activator.getDefault().getPreferenceStore()
 				.getString(PreferenceConstants.EXPRESS_VERSION);
 	}
+	
+	public static String getCompletionsJsonPath() {
+		return Activator.getDefault().getPreferenceStore()
+				.getString(PreferenceConstants.COMPLETIONS_JSON_PATH);
+	}
+	
 
 	public static int getExpressMajorVersion() {
 		String ver = getExpressVersion();

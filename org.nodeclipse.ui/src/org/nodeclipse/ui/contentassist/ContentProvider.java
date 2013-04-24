@@ -8,15 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.nodeclipse.ui.util.Constants;
+import org.nodeclipse.ui.util.ProcessUtils;
 
+/**
+ * @author LambGao
+ * @author Paul Verest
+ */
 public class ContentProvider {
 
     public static JSONArray COMPLETIONS;
 
     static {
         try {
-        	//TODO option to have this as external file
-            InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(Constants.COMPLETIONS_JSON);
+        	// option to have completions.json as external file
+        	String completionJsonPath = ProcessUtils.getCompletionsJsonPath();
+        	if (completionJsonPath == null || completionJsonPath.equals("")) {
+        		completionJsonPath = Constants.COMPLETIONS_JSON;
+        	}
+            InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(completionJsonPath);
             JSONObject object = new JSONObject(inputStream2String(is));
             COMPLETIONS = object.getJSONArray(Constants.COMPLETIONS_KEY);
         } catch (JSONException e) {
