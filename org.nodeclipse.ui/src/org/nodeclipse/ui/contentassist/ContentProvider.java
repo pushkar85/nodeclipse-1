@@ -15,6 +15,7 @@ public class ContentProvider {
 
     static {
         try {
+        	//TODO option to have this as external file
             InputStream is = ContentProvider.class.getClassLoader().getResourceAsStream(Constants.COMPLETIONS_JSON);
             JSONObject object = new JSONObject(inputStream2String(is));
             COMPLETIONS = object.getJSONArray(Constants.COMPLETIONS_KEY);
