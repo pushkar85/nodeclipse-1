@@ -11,6 +11,8 @@ Moved from [https://github.com/tomotaro1065/nodeclipse](https://github.com/tomot
 The purpose of Nodeclipse is to create environment in 
 which Node.js development is easy for any user from beginner to professional. 
 
+Check [news](https://github.com/Nodeclipse/nodeclipse-blog#news)
+
 ## Vision
 
 One-stop shop for Node.js tools.
@@ -26,12 +28,12 @@ We can't develop everything at once, but we let you know what are the best thing
 * Debugging - Breakpoint, Trace, etc... via [Eclipse debugger plugin for V8](http://code.google.com/p/chromedevtools/)
 * Generating Express project
 * Support for [JSHint](http://www.jshint.com/).<br/>
-	Download site: http://github.eclipsesource.com/jshint-eclipse/updates/
+	Download site: <code>http://github.eclipsesource.com/jshint-eclipse/updates/</code>
 * Support for Juno
 
 ## Installing
 Drag and drop <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=759140" title="Drag and drop into a running Eclipse Indigo workspace to install Nodeclipse"><img src="http://marketplace.eclipse.org/sites/all/modules/custom/marketplace/images/installbutton.png"/></a> into a running Eclipse Indigo workspace to install Nodeclipse.
-Download site : http://www.nodeclipse.org/updates  
+Download site : <code>http://www.nodeclipse.org/updates</code>  
 
 ## Usage
 
