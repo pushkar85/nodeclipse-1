@@ -83,21 +83,33 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 Please participate in discussion and [vote](https://github.com/Nodeclipse/nodeclipse-1/issues/13)
  on features on https://github.com/Nodeclipse/nodeclipse-1/issues
 
-### 0.4 (TBD)
+### 0.4 (May-June-July 2013)
 
 - Improving Code Assist
-- Support for Sublime Text
+- (Optional) Support for Sublime Text
+* [t#4 [Low priority enhancement] Option to Run project default module (taken from package.json), 
+ when righ-clicking project folder](https://github.com/tomotaro1065/nodeclipse/issues/4)
+- Associate *.json files with JS Editor
 
 ### 0.5 (June-July 2013)
 
 - Kepler 4.3 support
 
+### 0.6 
+
+- JSquared Editor
+
+### 1.0
+
+Is expected together with Node.js 1.0
+
+### Next
 
 ### Ideas, proposals, work-in-progress etc.
 - Improving Code Assist
 - Debugging features without Chrome developer tools.  In other words, debugging on Node Editor
 - Obfuscation and source-level debugging features using Source Maps
-- Unit test support
+- Unit test support (how?)
 - Easily deployment to Heroku (possibly via [Heroku Eclipse plugin](https://devcenter.heroku.com/articles/getting-started-with-heroku-eclipse))  
 	Download site: https://eclipse-plugin.herokuapp.com/install
 
@@ -106,6 +118,9 @@ Please participate in discussion and [vote](https://github.com/Nodeclipse/nodecl
 - Add CoffeeScript support via [coffeescript-eclipse plugin](https://github.com/adamschmideg/coffeescript-eclipse)  
 	Download site: http://coffeescript-editor.eclipselabs.org.codespot.com/hg/  
 	(also requires XText. See CoffeeScriptSet.p2f in Enide for quick install)
+
+### Shelved
+
 - [Eclipse Json Editor Plugin](http://sourceforge.net/p/eclipsejsonedit/wiki/Home/) Last Update: 2012-11-07
  (The JSON Editor is a simple plugin for the Eclipse IDE that provides:
   - Color text highlighting
