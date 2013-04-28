@@ -164,7 +164,9 @@ In Eclipse for Java or RCP developers
 
 ### Code standard
 
-1. If you edited or created file, add yourself as @author in JavaDoc or comments 	  
+1. If you edited or created file, add yourself as @author in JavaDoc or comments
+2. Import <code>CodeStyle_codetemplates.xml</code>; instructions are inside the xml file.   
+ 	This will add @author in new files automatically. Use <kbd>Ctrl+Alt+J</kbd> to quickly insert in existing files. 	  
 
 ## Contributors
 LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
