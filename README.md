@@ -85,17 +85,19 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 Please participate in discussion and [vote](https://github.com/Nodeclipse/nodeclipse-1/issues/13)
  on features on https://github.com/Nodeclipse/nodeclipse-1/issues
 
-### 0.4 (May-June-July 2013)
+### 0.4 (May 2013)
 
-- Improving Code Assist
+- Improving Code Assist with convention-based <code>completions.json<code>
 - (Optional) Support for Sublime Text
 * [t#4 [Low priority enhancement] Option to Run project default module (taken from package.json), 
  when righ-clicking project folder](https://github.com/tomotaro1065/nodeclipse/issues/4)
 - Associate *.json files with JS Editor
+- Integrate Markdown Editor, add Markdown HTML preview to Node perspective
 
 ### 0.5 (June-July 2013)
 
 - Kepler 4.3 support
+- Improving Code Assist (new ideas needed)
 
 ### 0.6 
 
