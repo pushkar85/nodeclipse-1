@@ -14,8 +14,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IWorkspace;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -30,8 +28,8 @@ import org.eclipse.ui.dialogs.IOverwriteQuery;
 import org.eclipse.ui.ide.undo.CreateProjectOperation;
 import org.eclipse.ui.ide.undo.WorkspaceUndoUtil;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
+import org.eclipse.wst.jsdt.internal.ui.workingsets.JavaWorkingSetUpdater;
 import org.nodeclipse.ui.Activator;
-import org.nodeclipse.ui.nature.NodeNature;
 import org.nodeclipse.ui.npm.InstallLaunchShortcut;
 import org.nodeclipse.ui.util.Constants;
 import org.nodeclipse.ui.util.LogUtil;
@@ -66,7 +64,7 @@ public class ExpressProjectWizard extends AbstractNodeProjectWizard {
 				createWorkingSetGroup(
 						(Composite) getControl(),
 						getSelection(),
-						new String[] { "org.eclipse.ui.resourceWorkingSetPage" }); //$NON-NLS-1$
+						new String[] { JavaWorkingSetUpdater.ID, "org.eclipse.ui.resourceWorkingSetPage" }); //$NON-NLS-1$
 				Dialog.applyDialogFont(getControl());
 			}
 		};
