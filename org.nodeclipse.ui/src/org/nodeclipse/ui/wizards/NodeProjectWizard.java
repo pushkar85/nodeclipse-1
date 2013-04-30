@@ -102,7 +102,7 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 		if (!mainPage.useDefaults()) {
 			location = mainPage.getLocationURI();
 		}
-
+/*
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		final IProjectDescription description = workspace
 				.newProjectDescription(newProjectHandle.getName());
@@ -112,7 +112,8 @@ public class NodeProjectWizard extends AbstractNodeProjectWizard implements INew
 		System.arraycopy(natures, 0, newNatures, 0, natures.length);
 		newNatures[natures.length] = NodeNature.NATURE_ID;
 		description.setNatureIds(newNatures);
-
+*/
+		final IProjectDescription description = createProjectDescription(newProjectHandle, location);
 		final boolean exists = isExistsProjectFolder(description);
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {

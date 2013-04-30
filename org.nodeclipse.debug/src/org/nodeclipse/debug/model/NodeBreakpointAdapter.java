@@ -38,7 +38,7 @@ public class NodeBreakpointAdapter extends
 			}
 			
 			addBreakpoint(resource, lineNumber);
-			if(res2.exists()) {
+			if(res2 != null && res2.exists()) {
 				addBreakpoint(res2, lineNumber);
 			}
 		}
