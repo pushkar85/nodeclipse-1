@@ -168,6 +168,11 @@ In Eclipse for Java or RCP developers
 2. Import <code>CodeStyle_codetemplates.xml</code>; instructions are inside the xml file.   
  	This will add @author in new files automatically. Use <kbd>Ctrl+Alt+J</kbd> to quickly insert in existing files. 	  
 
+### Testing
+
+Developers may try latest unreleased version at update URL:
+<code>http://www.tomotaro1065.com/nodeclipse/staging/</code>
+
 ## Contributors
 LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   
 Scott Elcomb https://github.com/psema4  
