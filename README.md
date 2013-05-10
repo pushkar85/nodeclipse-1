@@ -135,7 +135,13 @@ Is expected together with Node.js 1.0
 	
 ## Developing
 
-Before starting development, please do
+### First tiny steps
+
+1. Register & login within [GitHub](https://github.com/Nodeclipse)
+2. Add stars to the projects, that you like
+3. Fork to your account, play with code 
+
+### Before starting development, please do
 
 1. Carefully read materials
 2. Install and give thorough try
@@ -151,7 +157,7 @@ In Eclipse for Java or RCP developers
 1. Copy to clipboard git repository URL: <code>https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. File -> Import.. -> Git / Project from git
 
-#### Other way
+##### Other way, not recommended way
 
 1. <code>git clone https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. [Download Eclipse](http://www.eclipse.org/downloads/) 
@@ -162,11 +168,28 @@ In Eclipse for Java or RCP developers
 	Select Projects with source folders
 -->
 
+#### Update forked project
+
+If you forked into your account, after a while it is possible that code at original repository was updated.
+
+With git command line you need to open project base folder, then
+
+<code>
+	git remote add upstream https://github.com/Nodeclipse/project-you-forked.git  
+	git fetch upstream  
+	git merge upstream/master   
+	git push origin master  
+</code>
+
+With EGit you should do the same steps but within GUI.
+
 ### Code standard
 
 1. If you edited or created file, add yourself as @author in JavaDoc or comments
 2. Import <code>CodeStyle_codetemplates.xml</code>; instructions are inside the xml file.   
  	This will add @author in new files automatically. Use <kbd>Ctrl+Alt+J</kbd> to quickly insert in existing files. 	  
+
+### Send Pull Request
 
 ### Testing
 
