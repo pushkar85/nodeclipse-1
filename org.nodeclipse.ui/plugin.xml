@@ -131,17 +131,20 @@
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
+            targetID="org.nodeclipse.ui.perspectives.NodePerspective">
+			<viewShortcut id="winterwell.markdown.views.MarkdownPreview"/>
+			<view id="winterwell.markdown.views.MarkdownPreview" 
+                relative="org.eclipse.ui.console.ConsoleView" 
+                relationship="stack"/>          	
+			<view id="org.eclipse.pde.runtime.LogView" 
+                relative="winterwell.markdown.views.MarkdownPreview" 
+                relationship="stack"/>          	
+      </perspectiveExtension>
+      <perspectiveExtension
             targetID="org.eclipse.ui.resourcePerspective">
-            <viewShortcut id="winterwell.markdown.views.MarkdownPreview"/>
          	<perspectiveShortcut
                id="org.nodeclipse.ui.perspectives.NodePerspective">
          	</perspectiveShortcut>
-			<view id="winterwell.markdown.views.MarkdownPreview" 
-                relative="org.eclipse.ui.views.Console" 
-            relationship="stack"/>          	
-			<view id="org.eclipse.ui.views.ErrorLog" 
-                relative="winterwell.markdown.views.MarkdownPreview" 
-            relationship="stack"/>          	
       </perspectiveExtension>
       <perspectiveExtension
             targetID="org.eclipse.debug.ui.DebugPerspective">
