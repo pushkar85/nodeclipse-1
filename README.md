@@ -168,7 +168,13 @@ In Eclipse for Java or RCP developers
 	Select Projects with source folders
 -->
 
-#### Update forked project
+### Code standard
+
+1. If you edited or created file, add yourself as @author in JavaDoc or comments
+2. Import <code>CodeStyle_codetemplates.xml</code>; instructions are inside the xml file.   
+ 	This will add @author in new files automatically. Use <kbd>Ctrl+Alt+J</kbd> to quickly insert in existing files. 	  
+
+### Update forked project
 
 If you forked into your account, after a while it is possible that code at original repository was updated.
 
@@ -182,12 +188,6 @@ With git command line you need to open project base folder, then
 </code>
 
 With EGit you should do the same steps but within GUI.
-
-### Code standard
-
-1. If you edited or created file, add yourself as @author in JavaDoc or comments
-2. Import <code>CodeStyle_codetemplates.xml</code>; instructions are inside the xml file.   
- 	This will add @author in new files automatically. Use <kbd>Ctrl+Alt+J</kbd> to quickly insert in existing files. 	  
 
 ### Send Pull Request
 
