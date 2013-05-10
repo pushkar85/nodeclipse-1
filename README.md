@@ -189,7 +189,13 @@ With git command line you need to open project base folder, then
 
 With EGit you should do the same steps but within GUI.
 
-### Send Pull Request
+### Send Pull Request steps
+
+1. Push to your remote <code>origin<code> (your account)
+2. Open GitHub page for your fork
+3. Press <kbd>Pull Request<kbd>
+4. Review Commits on Commits tab
+5. Write description, press <kbd>Send pull request<kbd>
 
 ### Testing
 
