@@ -180,12 +180,14 @@ If you forked into your account, after a while it is possible that code at origi
 
 With git command line you need to open project base folder, then
 
+<pre>
 <code>
 	git remote add upstream https://github.com/Nodeclipse/project-you-forked.git  
 	git fetch upstream  
 	git merge upstream/master   
 	git push origin master  
 </code>
+</pre>
 
 With EGit you should do the same steps but within GUI.
 
@@ -193,9 +195,9 @@ With EGit you should do the same steps but within GUI.
 
 1. Push to your remote <code>origin<code> (your account)
 2. Open GitHub page for your fork
-3. Press <kbd>Pull Request<kbd>
+3. Press <kbd>Pull Request</kbd>
 4. Review Commits on Commits tab
-5. Write description, press <kbd>Send pull request<kbd>
+5. Write description, press <kbd>Send pull request</kbd>
 
 ### Testing
 
