@@ -9,15 +9,6 @@
       </category>
       <wizard
             category="org.nodeclipse.ui.wizards.category"
-            class="org.nodeclipse.ui.wizards.ExpressProjectWizard"
-            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
-            icon="icons/node.png"
-            id="org.nodeclipse.ui.wizards.ExpressProjectWizard"
-            name="Node Express Project"
-            project="true">
-      </wizard>
-      <wizard
-            category="org.nodeclipse.ui.wizards.category"
             class="org.nodeclipse.ui.wizards.NodeProjectWizard"
             finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
             icon="icons/node.png"
@@ -25,7 +16,19 @@
             name="Node Project"
             project="true">
          <description>
-            Create a new Node language project
+            Create a new Node.js project (or add .project file to existing project)
+         </description>
+      </wizard>
+      <wizard
+            category="org.nodeclipse.ui.wizards.category"
+            class="org.nodeclipse.ui.wizards.ExpressProjectWizard"
+            finalPerspective="org.nodeclipse.ui.perspectives.NodePerspective"
+            icon="icons/node.png"
+            id="org.nodeclipse.ui.wizards.ExpressProjectWizard"
+            name="Node Express Project"
+            project="true">
+         <description>
+            Create a new Node.js project with Express.js framework (Express should be installed before with <code>npm install -g express</code>)
          </description>
       </wizard>
       <wizard
@@ -36,7 +39,7 @@
             id="org.nodeclipse.ui.wizards.NodeFileWizard"
             name="Node Source File">
          <description>
-            Create a new Node source file
+            Create a new JavaScript source file
          </description>
       </wizard>
    </extension>
@@ -128,10 +131,20 @@
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
+            targetID="org.nodeclipse.ui.perspectives.NodePerspective">
+			<viewShortcut id="winterwell.markdown.views.MarkdownPreview"/>
+			<view id="winterwell.markdown.views.MarkdownPreview" 
+                relative="org.eclipse.ui.console.ConsoleView" 
+                relationship="stack"/>          	
+			<view id="org.eclipse.pde.runtime.LogView" 
+                relative="winterwell.markdown.views.MarkdownPreview" 
+                relationship="stack"/>          	
+      </perspectiveExtension>
+      <perspectiveExtension
             targetID="org.eclipse.ui.resourcePerspective">
-         <perspectiveShortcut
+         	<perspectiveShortcut
                id="org.nodeclipse.ui.perspectives.NodePerspective">
-         </perspectiveShortcut>
+         	</perspectiveShortcut>
       </perspectiveExtension>
       <perspectiveExtension
             targetID="org.eclipse.debug.ui.DebugPerspective">
