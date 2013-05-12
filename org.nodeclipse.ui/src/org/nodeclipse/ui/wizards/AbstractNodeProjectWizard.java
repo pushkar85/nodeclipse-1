@@ -14,6 +14,7 @@ import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
@@ -33,7 +34,9 @@ import org.eclipse.ui.internal.WorkbenchPlugin;
 import org.eclipse.ui.internal.registry.PerspectiveDescriptor;
 import org.eclipse.ui.wizards.datatransfer.ImportOperation;
 import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
+import org.eclipse.wst.jsdt.core.JavaScriptCore;
 import org.nodeclipse.ui.Activator;
+import org.nodeclipse.ui.nature.NodeNature;
 import org.nodeclipse.ui.perspectives.NodePerspective;
 import org.osgi.framework.Bundle;
 
@@ -76,6 +79,21 @@ public abstract class AbstractNodeProjectWizard extends Wizard implements INewWi
     }
     
     protected abstract IProject createNewProject();
+    
+    protected IProjectDescription createProjectDescription(IProject newProjectHandle, URI location) {
+		IWorkspace workspace = ResourcesPlugin.getWorkspace();
+		final IProjectDescription description = workspace
+				.newProjectDescription(newProjectHandle.getName());
+		description.setLocationURI(location);
+		String[] natures = description.getNatureIds();
+		String[] newNatures = new String[natures.length + 2];
+		System.arraycopy(natures, 0, newNatures, 0, natures.length);
+		newNatures[natures.length] = NodeNature.NATURE_ID;
+		newNatures[natures.length+1] = JavaScriptCore.NATURE_ID;
+		description.setNatureIds(newNatures);    	
+		
+		return description;
+    }
 
     protected void generateTemplates(String path, IProject projectHandle) throws CoreException {
 		Bundle bundle = Activator.getDefault().getBundle();

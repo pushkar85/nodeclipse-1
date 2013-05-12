@@ -13,7 +13,9 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.console,
  org.eclipse.debug.ui,
  org.eclipse.ui.navigator,
- org.chromium.debug.ui;bundle-version="0.3.9"
+ org.chromium.debug.ui;bundle-version="0.3.9",
+ org.eclipse.wst.jsdt.core;bundle-version="1.1.102",
+ org.eclipse.wst.jsdt.ui;bundle-version="1.1.102"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.nodeclipse.ui,

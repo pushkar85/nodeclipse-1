@@ -4,7 +4,12 @@
     <extension point="org.eclipse.core.runtime.adapters">
         <factory
             class="org.nodeclipse.debug.model.BreakpointAdapterFactory"
-            adaptableType="org.eclipse.ui.texteditor.ITextEditor">
+            adaptableType="org.chromium.debug.ui.editors.JsEditor">
+          <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget" /> 
+        </factory>
+        <factory
+            class="org.nodeclipse.debug.model.BreakpointAdapterFactory"
+            adaptableType="org.nodeclipse.ui.editors.NodeEditor">
           <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget" /> 
         </factory>
     </extension>
