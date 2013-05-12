@@ -85,17 +85,19 @@ We use [Semantic Versioning](http://semver.org/). Version is MAJOR.MINOR.PATCH, 
 Please participate in discussion and [vote](https://github.com/Nodeclipse/nodeclipse-1/issues/13)
  on features on https://github.com/Nodeclipse/nodeclipse-1/issues
 
-### 0.4 (May-June-July 2013)
+### 0.4 (May 2013)
 
-- Improving Code Assist
+- Improving Code Assist with convention-based <code>completions.json<code>
 - (Optional) Support for Sublime Text
 * [t#4 [Low priority enhancement] Option to Run project default module (taken from package.json), 
  when righ-clicking project folder](https://github.com/tomotaro1065/nodeclipse/issues/4)
 - Associate *.json files with JS Editor
+- Integrate Markdown Editor, add Markdown HTML preview to Node perspective
 
 ### 0.5 (June-July 2013)
 
 - Kepler 4.3 support
+- Improving Code Assist (new ideas needed)
 
 ### 0.6 
 
@@ -133,7 +135,13 @@ Is expected together with Node.js 1.0
 	
 ## Developing
 
-Before starting development, please do
+### First tiny steps
+
+1. Register & login within [GitHub](https://github.com/Nodeclipse)
+2. Add stars to the projects, that you like
+3. Fork to your account, play with code 
+
+### Before starting development, please do
 
 1. Carefully read materials
 2. Install and give thorough try
@@ -149,7 +157,7 @@ In Eclipse for Java or RCP developers
 1. Copy to clipboard git repository URL: <code>https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. File -> Import.. -> Git / Project from git
 
-#### Other way
+##### Other way, not recommended way
 
 1. <code>git clone https://github.com/Nodeclipse/nodeclipse-1.git</code>
 2. [Download Eclipse](http://www.eclipse.org/downloads/) 
@@ -162,7 +170,37 @@ In Eclipse for Java or RCP developers
 
 ### Code standard
 
-1. If you edited or created file, add yourself as @author in JavaDoc or comments 	  
+1. If you edited or created file, add yourself as @author in JavaDoc or comments
+2. Import <code>CodeStyle_codetemplates.xml</code>; instructions are inside the xml file.   
+ 	This will add @author in new files automatically. Use <kbd>Ctrl+Alt+J</kbd> to quickly insert in existing files. 	  
+
+### Update forked project
+
+If you forked into your account, after a while it is possible that code at original repository was updated.
+
+With git command line you need to open project base folder, then
+
+<pre><code>
+git remote add upstream https://github.com/Nodeclipse/project-you-forked.git  
+git fetch upstream  
+git merge upstream/master   
+git push origin master  
+</code></pre>
+
+With EGit you should do the same steps but within GUI.
+
+### Send Pull Request steps
+
+1. Push to your remote <code>origin</code> (your account)
+2. Open GitHub page for your fork
+3. Press <kbd>Pull Request</kbd>
+4. Review Commits on Commits tab
+5. Write description, press <kbd>Send pull request</kbd>
+
+### Testing
+
+Developers may try latest unreleased version at update URL:
+<code>http://www.tomotaro1065.com/nodeclipse/staging/</code>
 
 ## Contributors
 LambGao 魔都 https://github.com/Nodeclipse (original creator v0.1.8)   

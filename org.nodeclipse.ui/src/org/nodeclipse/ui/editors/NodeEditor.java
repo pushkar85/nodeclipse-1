@@ -1,5 +1,12 @@
 package org.nodeclipse.ui.editors;
 
+import org.eclipse.wst.jsdt.internal.ui.javaeditor.CompilationUnitEditor;
+
+@SuppressWarnings("restriction")
+public class NodeEditor extends CompilationUnitEditor {
+}
+ 
+/*
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.text.IDocumentExtension3;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
@@ -26,9 +33,6 @@ public class NodeEditor extends TextEditor {
         setDocumentProvider(new NodeDocumentProvider());
     }
 
-    /**
-     * 匹配双括号
-     */
     @Override
     protected void configureSourceViewerDecorationSupport(SourceViewerDecorationSupport support) {
         super.configureSourceViewerDecorationSupport(support);
@@ -46,3 +50,4 @@ public class NodeEditor extends TextEditor {
     }
 
 }
+*/
