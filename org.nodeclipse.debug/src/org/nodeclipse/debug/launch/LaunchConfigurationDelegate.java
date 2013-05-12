@@ -17,6 +17,12 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.model.ILaunchConfigurationDelegate;
 import org.eclipse.debug.core.model.RuntimeProcess;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.preference.PreferenceDialog;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
 import org.nodeclipse.ui.Activator;
@@ -43,10 +49,20 @@ public class LaunchConfigurationDelegate implements
 		}
 		
 		// Using configuration to build command line
+		
+		String nodePath = Activator.getDefault().getPreferenceStore().getString(PreferenceConstants.NODE_PATH);
+		
+		// Check if the node location is correctly configured
+		File nodeFile = new File(nodePath);
+		if(!nodeFile.exists()){
+			// If the location is not valid than show a dialog which prompts the user to goto the preferences page
+			showPreferencesDialog();
+			return;
+		}
+		
 		List<String> cmdLine = new ArrayList<String>();
 		// Application path should be stored in preference.
-		cmdLine.add(Activator.getDefault().getPreferenceStore()
-				.getString(PreferenceConstants.NODE_PATH));
+		cmdLine.add(nodePath);
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
 			cmdLine.add("--debug-brk=5858");
 		}
@@ -86,6 +102,23 @@ public class LaunchConfigurationDelegate implements
 			}
 		}
 		nodeProcess = process;
+	}
+
+	private void showPreferencesDialog() {
+		Display.getDefault().syncExec(new Runnable() {
+			public void run() {
+				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+
+				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, "Node.js runtime not correctly configured.\n\n"
+						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location", MessageDialog.ERROR, new String[] { "Open Prefrences ...", "Cancel" }, 0);
+				int result = dialog.open();
+				if (result == 0) {
+					PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(shell, PreferenceConstants.PREFERENCES_PAGE, null, null);
+					if (pref != null)
+						pref.open();
+				}
+			}
+		});
 	}
 	
 	public static void terminateNodeProcess() {
