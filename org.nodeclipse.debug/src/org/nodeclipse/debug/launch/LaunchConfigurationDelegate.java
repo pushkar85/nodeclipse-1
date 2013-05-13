@@ -109,7 +109,7 @@ public class LaunchConfigurationDelegate implements
 			public void run() {
 				Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 
-				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, "Node.js runtime not correctly configured.\n\n"
+				MessageDialog dialog = new MessageDialog(shell, "Nodeclipse", null, "Node.js runtime is not correctly configured.\n\n"
 						+ "Please goto Window -> Prefrences -> Nodeclipse and configure the correct location", MessageDialog.ERROR, new String[] { "Open Prefrences ...", "Cancel" }, 0);
 				int result = dialog.open();
 				if (result == 0) {
