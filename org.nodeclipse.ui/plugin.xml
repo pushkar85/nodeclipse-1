@@ -49,7 +49,7 @@
             class="org.nodeclipse.ui.editors.NodeEditor"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
             default="true"
-            extensions="js"
+            extensions="js,json"
             icon="icons/node.png"
             id="org.nodeclipse.ui.editors.NodeEditor"
             name="Node Editor">
