@@ -25,6 +25,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 import org.nodeclipse.debug.util.Constants;
 import org.nodeclipse.debug.util.NodeDebugUtil;
+import org.nodeclipse.debug.util.VariablesUtil;
 import org.nodeclipse.ui.Activator;
 import org.nodeclipse.ui.preferences.PreferenceConstants;
 
@@ -90,11 +91,23 @@ public class LaunchConfigurationDelegate implements
 			}
 		}
 		
+		String workingDirectory = configuration.getAttribute(Constants.ATTR_WORKING_DIRECTORY, "");
+		File workingPath = null;
+		if(workingDirectory.length() == 0) {
+			workingPath = (new File(filePath)).getParentFile();
+		} else {
+			workingDirectory = VariablesUtil.resolveValue(workingDirectory);
+			if(workingDirectory == null) {
+				workingPath = (new File(filePath)).getParentFile();
+			} else {
+				workingPath = new File(workingDirectory);
+			}
+		}
+		
 		String[] cmds = {};
 		cmds = cmdLine.toArray(cmds);
 		// Launch a process to debug.eg,
-		Process p = DebugPlugin
-				.exec(cmds, (new File(filePath)).getParentFile());
+		Process p = DebugPlugin.exec(cmds, workingPath);
 		RuntimeProcess process = (RuntimeProcess)DebugPlugin.newProcess(launch, p, Constants.PROCESS_MESSAGE);
 		if (mode.equals(ILaunchManager.DEBUG_MODE)) {
 			if(!process.isTerminated()) { 
